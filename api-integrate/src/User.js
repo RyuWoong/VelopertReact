@@ -10,8 +10,12 @@ async function getUser({ id }) {
 }
 
 function User({ id }) {
-  const { data: user, error, isLoading } = useAsync(() => getUser(id), [id]);
-  if (loading) return <div>로딩중...</div>;
+  const { data: user, error, isLoading } = useAsync({
+    promiseFn: getUser,
+    id,
+    watch: id,
+  });
+  if (isLoading) return <div>로딩중...</div>;
   if (error) return <div>에러가 발생했습니다.</div>;
   if (!user) return <div>유저가 없습니다.</div>;
   return (
