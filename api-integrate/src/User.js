@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { useAsync } from "react-async";
 import { useUserState, useUsersDispatch, getUser } from "./UsersContext";
 
 function User({ id }) {
