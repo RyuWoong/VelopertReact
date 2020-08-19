@@ -78,7 +78,7 @@ function usersReducer(state, action) {
 const UsersStateContext = createContext(null);
 const UsersDispatchContext = createContext(null);
 
-export function UsersProvier({ children }) {
+export function UsersProvider({ children }) {
   const [state, dispatch] = useReducer(usersReducer, initialState);
   return (
     <UsersStateContext.Provider value={state}>
@@ -105,7 +105,7 @@ export function useUsersDispatch() {
   return dispatch;
 }
 
-export async function getUSers(dispatch) {
+export async function getUsers(dispatch) {
   dispatch({ type: "GET_USERS" });
   try {
     const response = await axios.get(
@@ -123,7 +123,7 @@ export async function getUSers(dispatch) {
   }
 }
 
-export async function getUSer(dispatch, id) {
+export async function getUser(dispatch, id) {
   dispatch({ type: "GET_USER" });
   try {
     const response = await axios.get(
